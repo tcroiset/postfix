@@ -18,6 +18,22 @@
 # limitations under the License.
 #
 
+case node['platform_family']
+when 'debian'
+  package 'exim4' do
+    action :remove
+  end
+#  package 'exim4-base' do
+#    action :remove
+#  end
+  package 'exim4-config' do
+    action :remove
+  end
+  package 'exim4-daemon-light' do
+    action :remove
+  end
+end
+
 package 'postfix'
 
 if node['postfix']['use_procmail']
